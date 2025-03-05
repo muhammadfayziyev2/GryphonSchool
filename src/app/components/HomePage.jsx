@@ -12,7 +12,7 @@ const HomePage = () => {
     return (
         <div className='container'>
             <Header />
-            <MainImg />
+            {/* <MainImg /> */}
             <MainPage />
             <Komanda />
             <Aktion />
