@@ -1,23 +1,33 @@
-import React, { useState } from 'react'
+'use client'
+
+import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const RegisterPage = ({ sendData, loading }) => {
-    const [name, setName] = useState("")
+    const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!name || !phone || !message) {
+            toast.error("Пожалуйста, заполните все поля!");
+            return;
+        }
+        sendData(name, phone, message);
         setName("");
         setPhone("");
         setMessage("");
-        sendData(name, phone, message);
+        toast.success("Ваши данные успешно отправлены!");
     };
+
     return (
         <div>
             <form className='form_register' onSubmit={handleSubmit}>
                 <div className='name_register'>
                     <span className='span_register'>GRYPHON SCHOOL</span>
-                    <p className='register_name'>Пожалуйста, оставьте свои <br /> </p>
+                    <p className='register_name'>Пожалуйста, оставьте свои <br /></p>
                     <span className='register_name'>контактные данные</span>
                 </div>
                 <div className='register_form'>
@@ -40,12 +50,12 @@ const RegisterPage = ({ sendData, loading }) => {
                         />
                         <label className='label_register'>Курс</label>
                         <select
-                            name="" id=""
                             className='input_register'
                             value={message}
                             onChange={(e) => setMessage(e.target.value)}>
-                            <option value="IELTS / CEFR" >IELTS / CEFR</option>
-                            <option value="Ангилийский язык">Ангилийский язык</option>
+                            <option value="">Выберите курс</option>
+                            <option value="IELTS / CEFR">IELTS / CEFR</option>
+                            <option value="Английский язык">Английский язык</option>
                             <option value="pre Ielts">pre Ielts</option>
                             <option value="Русский язык">Русский язык</option>
                         </select>
@@ -53,15 +63,13 @@ const RegisterPage = ({ sendData, loading }) => {
                             <button
                                 className='btn_register'
                                 type="submit"
-                                disabled={loading}>{loading ? "Отправляеться..." : "Отправить"}</button>
+                                disabled={loading}>{loading ? "Отправляется..." : "Отправить"}</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default RegisterPage
-
-
+export default RegisterPage;

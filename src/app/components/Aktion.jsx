@@ -30,7 +30,7 @@ const Aktion = () => {
 
   return (
     <section id="Aktion">
-      <div>
+      <div> 
         <div className="aktion">
           <span className="span_aktion">{t.title}</span>
         </div>

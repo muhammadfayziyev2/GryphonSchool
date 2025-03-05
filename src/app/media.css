@@ -38,18 +38,21 @@
     }
 }
 
-@media(max-width:442px) {
+@media(max-width:442px) { 
     .font_header {
         font-size: 30px;
     }
 
     .btn_header {
-        font-size: 10px;
+        font-size: 10px; 
         padding: 12px;
         font-weight: 500;
         border-radius: 10px;
     }
-
+    .select_header{
+        font-size: 10px;
+        height: 381px;
+    }
     .main_word {
         font-size: 25px;
         margin-left: 30px;
@@ -103,12 +106,12 @@
     .main_location_words {
         margin-left: 20px;
         display: flex;
-        justify-content: center;
+        margin-right: 60px;
         flex-direction: column;
     }
 
     .main_location {
-        gap: 100px;
+        gap: 70px;
     }
 }
 
@@ -278,5 +281,65 @@
     .main_kurs {
         height: 100%;
         margin-top: -50px;
+    }
+}
+
+@media(max-width:1094px){
+    .h2_aktion{
+        font-size: 22px;
+    }
+    .span_aktion_2{
+        font-size: 15px;
+    }
+    .aktion_div{
+        height: 320px;
+        padding-right: 30px;
+    }
+}
+@media(max-width:815px) {
+    .h2_aktion {
+        font-size: 22px;
+    }
+
+    .span_aktion_2 {
+        font-size: 14px;
+    }
+
+    .aktion_div {
+        height: 320px;
+        padding-right: 30px;
+        width: 500px;
+    }
+}
+@media(max-width:510px) {
+    .h2_aktion {
+        font-size: 18px;
+    }
+
+    .span_aktion_2 {
+        font-size: 13px;
+    }
+
+    .aktion_div {
+        height: 320px;
+        padding-right: 30px;
+        width: 450px;
+    }
+}
+@media(max-width:450px){
+    .aktion_div{
+        width: 370px;
+        height: 450px;
+        padding-left: 20px;
+    }
+    .h2_aktion{
+        font-size: 20px;
+    }
+    .span_aktion_2{
+        font-size: 15px;
+        
+    }
+    .span_aktion{
+        font-size: 30px;
     }
 }

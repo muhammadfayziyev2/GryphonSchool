@@ -64,7 +64,7 @@ const Header = () => {
                         <option value="ru">RU</option>
                         <option value="uz">UZ</option>
                     </select>
-                </div>
+                </div> 
             </div>
         </header>
     );

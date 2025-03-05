@@ -39,6 +39,11 @@
 } 
 .select_header{
   margin-left: 20px;
+  width: 50px;
+  height: 58px;
+  border-radius: 10px;
+  background-color: #FFC000;
+  color: #2B3648;
 }
 .main_page {
   display: flex;
@@ -73,7 +78,7 @@
 }
 .mainimg{
   width: 100%;
-  
+   
 }
 .name_school {
   display: flex;
@@ -445,9 +450,9 @@
 .aktion_div {
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
+  padding-left: 50px;
   padding-top: 20px;
-  width: 55%;
+  width: 65%;
   height: 380px;
   margin: 0 auto;
   border-radius: 20px;

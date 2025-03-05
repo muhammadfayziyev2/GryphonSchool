@@ -32,7 +32,7 @@ const Location = () => {
             <footer>
                 <div>
                     <span className="name_location">{t.title}</span>
-                </div>
+                </div> 
                 <div className="main_location">
                     <div className="main_location_words">
                         <p className="p_location">{t.region}</p>

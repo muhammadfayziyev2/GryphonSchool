@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useLanguage } from "../context/LanguageContext"; // 🔥 Til konteksti
+import { useLanguage } from "../context/LanguageContext"; 
 
 const translations = {
     ru: {
@@ -16,7 +16,7 @@ const translations = {
 };
 
 const Footer = () => {
-    const { language } = useLanguage(); // 🔥 Tilni olish
+    const { language } = useLanguage(); 
     const t = translations[language] || translations["ru"];
 
     return (

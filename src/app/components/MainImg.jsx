@@ -19,13 +19,13 @@ const MainImg = () => {
         loop={true} // Cheksiz aylanish
       >
         <SwiperSlide>
-          <img src="wmremove-transformed.png" alt="Rasm 1" className="mainimg" />
+          <img src="reklama1.jpg" alt="Rasm 1" className="mainimg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="wmremove-transformed.png" alt="Rasm 2" className="mainimg" />
+          <img src="reklama2.jpg" alt="Rasm 2" className="mainimg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="wmremove-transformed.png" alt="Rasm 3" className="mainimg" />
+          <img src="reklama3.jpg" alt="Rasm 3" className="mainimg" />
         </SwiperSlide>
       </Swiper>
     </div>
