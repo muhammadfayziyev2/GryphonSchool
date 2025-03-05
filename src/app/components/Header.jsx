@@ -46,7 +46,7 @@ const Header = () => {
                             {t.location}
                         </ScrollLink>
                     </li>
-                    <li className="li">
+                    <li className="li"> 
                         <ScrollLink to="Aktion" smooth={true} duration={500} className="nav-link">
                             {t.discount}
                         </ScrollLink>
@@ -59,7 +59,7 @@ const Header = () => {
                     <select
                         className="select_header"
                         value={language}
-                        onChange={(e) => changeLanguage(e.target.value)} // 🔥 Tilni o'zgartirish
+                        onChange={(e) => changeLanguage(e.target.value)} 
                     >
                         <option value="ru">RU</option>
                         <option value="uz">UZ</option>
