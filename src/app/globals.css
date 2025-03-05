@@ -27,6 +27,7 @@
 }
 .li{
   list-style-type: none;
+  cursor: pointer;
 }
 .ul_header {
   color: white;
@@ -471,4 +472,8 @@
   font-family: "Nunito", serif;
   font-size: 20px;
   color: #2B3648;
+}
+
+.link{
+  margin-top: 40px;
 }

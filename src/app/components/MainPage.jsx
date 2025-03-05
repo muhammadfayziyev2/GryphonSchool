@@ -2,13 +2,13 @@
 
 import React from "react";
 import Image from "next/image";
-import { useLanguage } from "../context/LanguageContext"; // 🔥 Tilni boshqarish uchun
+import { useLanguage } from "../context/LanguageContext";
 
 const translations = {
   ru: {
     title: "Раскройте свой потенциал с GRYPHON – вашим проводником в мир знаний!",
     description:
-      "Добро пожаловать в GRYPHON, где знание становится силой! Наш центр предлагает обучение английскому языку и математике, помогая вам достичь новых высот независимо от вашего уровня подготовки.",
+      "Добро пожаловать в GRYPHON, где знание становится силой! Наш центр предлагает обучение английскому языку и русскому языку, помогая вам достичь новых высот независимо от вашего уровня подготовки.",
     whyTitle: "Почему GRYPHON SCHOOL?",
     features: [
       {
@@ -32,7 +32,7 @@ const translations = {
   uz: {
     title: "GRYPHON bilan salohiyatingizni oching – bilim olamiga yo‘lboshchingiz!",
     description:
-      "GRYPHON ga xush kelibsiz! Biz sizga ingliz tili va matematikadan ta’lim beramiz, tayyorgarlik darajangizdan qat’i nazar, sizni yangi yutuqlarga yetaklaymiz.",
+      "GRYPHON ga xush kelibsiz! Biz sizga ingliz tili va rus tilidanА ta’lim beramiz, tayyorgarlik darajangizdan qat’i nazar, sizni yangi yutuqlarga yetaklaymiz.",
     whyTitle: "Nega aynan GRYPHON SCHOOL?",
     features: [
       {
@@ -80,7 +80,7 @@ const MainPage = () => {
       <div className="public_mane">
         {t.features.map((feature, index) => (
           <div key={index} className="public">
-            <img src={feature.img} alt="Feature"  className="img_mane" />
+            <img src={feature.img} alt="Feature" className="img_mane" />
             <span className="public_span">{feature.text}</span>
           </div>
         ))}
