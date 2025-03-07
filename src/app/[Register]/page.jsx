@@ -10,7 +10,7 @@ const page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const sendData = async (name, phone, message) => {
+  const sendData = async (name, phone, message) => { 
     setLoading(true);
     setError("");
 
@@ -21,7 +21,6 @@ const page = () => {
           name,
           phone,
           message,
-          username: "Muhammad_workaut"
         }
       );
       if (res.status === 200) {

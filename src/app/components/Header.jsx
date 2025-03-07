@@ -18,7 +18,7 @@ const translations = {
         about: "Biz haqimizda",
         location: "Manzilimiz",
         discount: "Chegirmalar",
-        getDiscount: "Chegirma olish!",
+        getDiscount: "Bepul dars!",
     },
 };
 

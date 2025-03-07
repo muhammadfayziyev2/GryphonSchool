@@ -8,7 +8,7 @@ const translations = {
   ru: {
     title: "Раскройте свой потенциал с GRYPHON – вашим проводником в мир знаний!",
     description:
-      "Добро пожаловать в GRYPHON, где знание становится силой! Наш центр предлагает обучение английскому языку и русскому языку, помогая вам достичь новых высот независимо от вашего уровня подготовки.",
+      "Добро пожаловать в GRYPHON, где знание становится силой! Наш центр предлагает обучение английскому и русскому языку, помогая вам достичь новых высот независимо от вашего уровня подготовки.",
     whyTitle: "Почему GRYPHON SCHOOL?",
     features: [
       {
@@ -30,9 +30,9 @@ const translations = {
     ],
   },
   uz: {
-    title: "GRYPHON bilan salohiyatingizni oching – bilim olamiga yo‘lboshchingiz!",
+    title: "GRYPHON – kelajakka olib boruvchi bilim kaliti!",
     description:
-      "GRYPHON ga xush kelibsiz! Biz sizga ingliz tili va rus tilidanА ta’lim beramiz, tayyorgarlik darajangizdan qat’i nazar, sizni yangi yutuqlarga yetaklaymiz.",
+      "GRYPHON ga xush kelibsiz! Biz sizga ingliz tili va rus tilidan ta’lim beramiz, tayyorgarlik darajangizdan qat’i nazar, sizni yangi yutuqlarga yetaklaymiz.",
     whyTitle: "Nega aynan GRYPHON SCHOOL?",
     features: [
       {

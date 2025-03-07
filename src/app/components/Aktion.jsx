@@ -21,7 +21,7 @@ const translations = {
     discount1: "✔️ Har bir yangi o‘quvchi uchun 10% chegirma. Do‘stingiz sizning tavsiyangiz bilan darslarga yozilsa, chegirma olasiz!",
     discount2: "✔️ Har oy eng faol va muvaffaqiyatli uchta o‘quvchiga sovg‘alar! Mehnatsevarlik, tirishqoqlik va yutuqlarni qadrlaymiz!",
     encouragement: "Bilim ulashing va do‘stlaringizni GRYPHON SCHOOL ga taklif qiling!",
-    registerNow: "Chegirma olish!",
+    registerNow: "Bepul dars!",
   },
 };
 

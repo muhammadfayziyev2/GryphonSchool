@@ -56,7 +56,7 @@ const RegisterPage = ({ sendData, loading }) => {
                             <option value="">Выберите курс</option>
                             <option value="IELTS / CEFR">IELTS / CEFR</option>
                             <option value="Английский язык">Английский язык</option>
-                            <option value="pre Ielts">pre Ielts</option>
+                            <option value="Pre IELTS">Pre IELTS</option>
                             <option value="Русский язык">Русский язык</option>
                         </select>
                         <div className='btn'>
