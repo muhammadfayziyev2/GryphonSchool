@@ -10,17 +10,17 @@ const page = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const sendData = async (name, phone, message) => { 
+  const sendData = async (FullName, phone, courses) => { 
     setLoading(true);
     setError("");
 
     try {
       const res = await axios.post(
-        "https://zayavkabackend-production.up.railway.app/submit",
+        `https://zayavkabackend-production.up.railway.app/submit`,
         {
-          name,
+          FullName,
           phone,
-          message,
+          courses,
         }
       );
       if (res.status === 200) {

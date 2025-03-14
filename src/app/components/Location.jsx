@@ -24,7 +24,7 @@ const translations = {
 };
 
 const Location = () => {
-    const { language } = useLanguage(); // 🔥 Tanlangan til
+    const { language } = useLanguage(); 
     const t = translations[language] || translations["ru"];
 
     return (
@@ -44,7 +44,7 @@ const Location = () => {
                     <div className="main_location_words">
                         <p className="span_location">{t.phone}</p>
                         <span className="span_location">{t.hours}</span>
-                        <img src="studentttt.jpg" alt="Students" className="img_location" />
+                        <img src="logo2.jpg" alt="Students" className="img_location" />
                     </div>
                 </div>
             </footer>

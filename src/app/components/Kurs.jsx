@@ -116,7 +116,7 @@ const translations = {
 };
 
 const Kurs = () => {
-  const { language } = useLanguage(); // 🔥 Tilni olish
+  const { language } = useLanguage(); 
   const t = translations[language] || translations["ru"];
 
   return (
@@ -126,10 +126,9 @@ const Kurs = () => {
           <h1 className="kurs_name_h1">{t.title}</h1>
         </div>
         <Swiper
-          modules={[Navigation, Pagination]}
+          modules={[ Pagination]}
           spaceBetween={20}
           slidesPerView={1}
-          navigation
           pagination={{ clickable: true }}
           breakpoints={{
             768: { slidesPerView: 2 },
