@@ -27,7 +27,7 @@ const translations = {
       },
       {
         nomi: "Pre IELTS",
-        narx: "250 000 сум",
+        narx: "300 000 сум",
         tavsif: [
           "Фирменные учебники",
           "В группе учеников 15-20",
@@ -39,7 +39,7 @@ const translations = {
       },
       {
         nomi: "Elementary English group",
-        narx: "250 000 сум",
+        narx: "280 000 сум",
         tavsif: [
           "Фирменные учебники",
           "Дополнительные занятия",
@@ -79,7 +79,7 @@ const translations = {
       },
       {
         nomi: "Pre IELTS",
-        narx: "250 000 so‘m",
+        narx: "300 000 so‘m",
         tavsif: [
           "Brend darsliklar",
           "Guruhda 15-20 nafar o‘quvchi",
@@ -91,7 +91,7 @@ const translations = {
       },
       {
         nomi: "Elementary English group",
-        narx: "250 000 so‘m",
+        narx: "280 000 so‘m",
         tavsif: [
           "Brend darsliklar",
           "Qo‘shimcha mashg‘ulotlar",

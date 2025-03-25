@@ -343,3 +343,9 @@
         font-size: 30px;
     }
 }
+
+@media(max-width:430px){
+    .main_page{
+        margin-right: 30px;
+    }
+}

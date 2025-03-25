@@ -5,7 +5,7 @@ import { createContext, useContext, useState } from "react";
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState("ru"); // Boshlang‘ich til RU
+    const [language, setLanguage] = useState("ru"); 
 
     const changeLanguage = (lang) => {
         setLanguage(lang);
@@ -18,5 +18,4 @@ export const LanguageProvider = ({ children }) => {
     );
 };
 
-// Custom Hook
 export const useLanguage = () => useContext(LanguageContext);
