@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Kanit, Nunito } from "next/font/google";
+import { Geist, Geist_Mono, Kanit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import "./media.css"
 import { LanguageProvider } from "./context/LanguageContext";
@@ -18,10 +18,10 @@ const kanit = Kanit({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
 })
 
-const nunito = Nunito({
-  subsets: ["latin"],
-  weight: ['1000', '200', '300', '400', '500', '600', '700', '800', '900']
-})
+const spaceGrotesk = Space_Grotesk({
+  weight: ['300', '400', '500', '600', '700'], // ✅ mavjud og‘irliklar
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: "Gryphon school",
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" type="image/x-icon" href="logo2.jpg"></link>
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${kanit} ${nunito} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${kanit} ${spaceGrotesk} antialiased`}
       >
         <LanguageProvider>{children}</LanguageProvider>
       </body>

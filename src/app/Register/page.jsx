@@ -36,7 +36,7 @@ const page = () => {
   };
 
   return (
-    <div>
+    <div className="register-home">
       <ToastContainer />
       <RegisterPage sendData={sendData} loading={loading} />
     </div>

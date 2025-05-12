@@ -1,26 +1,26 @@
+'use client'
+
 import React from 'react'
 import Header from './Header'
 import MainPage from './MainPage'
-import Komanda from './Komanda'
+import About from './About'
 import Kurs from './Kurs'
-import Location from './Location'
+import ServicesSection from './ServicesSection'
+import ContactInfo from './ContactInfo'
 import Footer from './Footer'
-import Aktion from './Aktion'
-import MainImg from './MainImg'
 
 const HomePage = () => {
-    return (
-        <div className='container'>
-            <Header />
-            {/* <MainImg /> */}
-            <MainPage />
-            <Komanda />
-            <Aktion />
-            <Kurs />
-            <Location />
-            <Footer />
-        </div>
-    )
+  return (
+    <div className='wrapper'>
+      <Header />
+      <MainPage />
+      <About />
+      <ServicesSection/>
+      <Kurs/>
+      <ContactInfo />
+      <Footer />
+    </div>
+  )
 }
 
 export default HomePage
