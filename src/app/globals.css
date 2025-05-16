@@ -47,12 +47,7 @@
 
 .wrapper {
   width: 100%;
-  background-color: var(--darker-bg);
-  color: var(--text-primary);
-  background-image:
-    linear-gradient(to right, #0f172a 1px, transparent 1px),
-    linear-gradient(to bottom, #0f172a 1px, transparent 1px);
-  background-size: 80px 40px;
+
 }
 
 .header {
@@ -190,7 +185,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+ 
 }
 
 .hero {
@@ -592,10 +587,7 @@
 .cont {
   padding-top: 100px;
   height: 100vh;
-  background-image:
-    linear-gradient(to right, #0f172a 1px, transparent 1px),
-    linear-gradient(to bottom, #0f172a 1px, transparent 1px);
-  background-size: 80px 40px;
+  background: radial-gradient(circle at center, #112244 0%, #000b1f 100%)
 }
 
 .register-form {
@@ -897,16 +889,13 @@ button:disabled {
 .login-unit {
   width: 100%;
   height: 100vh;
-  background-color: var(--darker-bg);
   color: var(--text-primary);
-  background-image:
-    linear-gradient(to right, #0f172a 1px, transparent 1px),
-    linear-gradient(to bottom, #0f172a 1px, transparent 1px);
-  background-size: 80px 40px;
+  background: radial-gradient(circle at center, #112244 0%, #000b1f 100%);
   padding-top: 100px;
 }
+
 .contact-form-container {
- 
+
   background-color: #0f111a;
   padding: 30px;
   border-radius: 10px;

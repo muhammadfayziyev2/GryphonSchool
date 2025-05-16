@@ -14,11 +14,11 @@ const MainPage = () => {
         </p>
         <div className="hero-buttons">
           <Link href="/Register" className="btn-primary">Получить скидку!</Link>
-          <Link href="login" className="btn-outline">Войти</Link>
+          <Link href="/login" className="btn-outline">Войти</Link>
         </div>
       </div>
    </div>
   )
 }
 
-export default MainPage
+export default MainPage 
