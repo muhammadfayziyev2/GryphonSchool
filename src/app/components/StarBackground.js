@@ -37,7 +37,7 @@ export default function StarBackground() {
             // Animate stars
             for (let i = 0; i < stars.length; i++) {
                 const star = stars[i];
-                star.z -= 2;
+                star.z -= 0.5;
                 if (star.z <= 0) star.z = w;
 
                 const k = 128.0 / star.z;
