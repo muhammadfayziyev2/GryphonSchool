@@ -79,7 +79,7 @@ export default function StarBackground() {
                     zIndex: -1,
                 }}
             />
-            <MainPage />
+            
         </div>
     );
 }

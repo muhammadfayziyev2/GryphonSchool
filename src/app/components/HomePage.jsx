@@ -15,7 +15,7 @@ const HomePage = () => {
     <div className='wrapper'>
       <StarBackground/>
       <Header />
-      {/* <MainPage /> */}
+      <MainPage />
       <About />
       <ServicesSection/>
       <Kurs/>
