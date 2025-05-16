@@ -27,7 +27,7 @@ const RegisterPage = ({ sendData, loading }) => {
             <div className="register-container">
                 <form onSubmit={handleSubmit} className="register-form">
                     <div className="form-header">
-                        <h2 className='name-logo'>GRYPHON SCHOOL</h2>
+                        <h2 className="name-logo text-2xl font-bold text-black">GRYPHON SCHOOL</h2>
                         <p>Пожалуйста, оставьте свои контактные данные</p>
                     </div>
 

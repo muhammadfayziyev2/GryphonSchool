@@ -575,7 +575,7 @@
   max-width: 600px;
   padding: 20px;
   margin: 0 auto;
-  background: #1e1e2f;
+  background-color: #0f111a;
   border: 1px solid #333;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
@@ -586,7 +586,7 @@
 .cont {
   padding-top: 100px;
   height: 100vh;
-  background: radial-gradient(circle at center, #112244 0%, #000b1f 100%)
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
 }
 
 .register-form {
@@ -889,7 +889,7 @@ button:disabled {
   width: 100%;
   height: 100vh;
   color: var(--text-primary);
-  background: radial-gradient(circle at center, #112244 0%, #000b1f 100%);
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
   padding-top: 100px;
 }
 
@@ -951,4 +951,131 @@ button {
 
 button:hover {
   opacity: 0.9;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.ws-container {
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.ws-coming-soon {
+  color: #b0aaff;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 1rem;
+  display: inline-block;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.ws-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.ws-subtitle {
+  color: #aaa;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.ws-chat-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  box-shadow: 0 0 40px rgba(100, 100, 255, 0.1);
+}
+
+.ws-chat-card textarea {
+  width: 100%;
+  padding: 1rem;
+  height: 120px;
+  resize: none;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: rgba(0, 0, 50, 0.5);
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.ws-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.forecast-btn,
+.cancel-btn,
+.send-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.forecast-btn {
+  background: linear-gradient(90deg, #7c4dff, #7955ff);
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #333;
+  color: #ccc;
+}
+
+.send-btn {
+  background-color: #555;
+  color: white;
+}
+
+.forecast-btn:hover {
+  background: linear-gradient(90deg, #a06dff, #9c7aff);
+}
+
+.ws-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.ws-feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 280px;
+  text-align: left;
+  box-shadow: 0 0 20px rgba(80, 80, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ws-feature-card h3 {
+  color: #c5baff;
+  margin-bottom: 0.5rem;
+}
+
+.ws-feature-card p {
+  color: #aaa;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
