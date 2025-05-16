@@ -8,7 +8,7 @@ const About = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center md:text-left mb-8 md:mb-12">
-                        <div className="inline-block mb-3">
+                        <div className="mb-3">
                             <h2 className="gryphon text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                                 Почему GRYPHON SCHOOL?
                             </h2>
