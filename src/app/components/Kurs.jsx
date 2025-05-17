@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -16,13 +16,13 @@ const Kurs = () => {
 
                 {/* Swiper boshlanishi */}
                 <Swiper
-                    modules={[Navigation, Pagination]}
-                    spaceBetween={20}
+                    modules={[Navigation, Pagination, Autoplay]}
+                    autoplay={{ delay: 4000, disableOnInteraction: true }}
                     pagination={{ clickable: true }}
                     breakpoints={{
                         640: { slidesPerView: 1 },
                         768: { slidesPerView: 2 },
-                        
+
                     }}
                     className="projects-grid"
                 >
