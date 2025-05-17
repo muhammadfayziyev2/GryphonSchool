@@ -4,7 +4,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <div id="about" className="min-h-screen flex items-center relative py-12 sm:py-16 md:py-20">
+        <div id="about" className="flex items-center py-12 sm:py-16 md:py-20">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center md:text-left mb-8 md:mb-12">
@@ -15,7 +15,7 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
+                    <div className="cards grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-start">
                         {/* Card 1 */}
                         <div className="relative group">
                             <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-xl blur-sm group-hover:bg-indigo-500/30 transition-all duration-500"></div>
@@ -44,7 +44,7 @@ const About = () => {
                                     Наши учителя — это не только профессионалы, но и наставники, которые помогают каждому освоить материал легко и с уверенностью.
                                 </p>
                             </div>
-                        </div>
+                        </div> 
 
                         {/* Card 4 */}
                         <div className="relative group">

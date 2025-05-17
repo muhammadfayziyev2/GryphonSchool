@@ -1,37 +1,68 @@
-@media(max-width:765px){
-    .li-header{
+@media(max-width:765px) {
+    .li-header {
         display: none;
     }
-    .btn-header{
+
+    .btn-header {
         display: none;
     }
 }
 
-@media(max-width:770px){
-    .hero-title{
+@media(max-width:770px) {
+    .hero-title {
         font-size: 30px;
         margin-top: 50px;
     }
 }
-@media(max-width:440px){
-    .hero-title{
+
+@media(max-width:440px) {
+    .hero-title {
         font-size: 26px;
         margin-top: 70px;
     }
-    
+
 }
-@media(max-width:1400px){
-    .gryphon{
+
+@media(max-width:1400px) {
+    .gryphon {
         margin-top: 100px;
     }
 }
+
 @media(max-width:670px) {
     .gryphon {
         margin-top: 200px;
     }
 }
+
 @media(max-width:440px) {
     .gryphon {
         margin-top: 300px;
+    }
+}
+
+@media(max-width:440px) {
+    .relative {
+        max-width: 380px;
+    }
+
+    #about {
+        margin: 0 auto;
+        margin-top: -200px;
+    }
+
+    .projects-section {
+        width: 100%;
+    }
+
+    .kurs {
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: 25px;
+    }
+    .project-card{
+        margin: 0 auto;
     }
 }
