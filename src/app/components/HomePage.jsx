@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Header from './Header'
-import MainPage from './MainPage'
 import About from './About'
 import Kurs from './Kurs' 
 import ServicesSection from './ServicesSection'
@@ -15,7 +14,6 @@ const HomePage = () => {
     <div className='wrapper'>
       <StarBackground/>
       <Header />
-      {/* <MainPage /> */}
       <About />
       <ServicesSection/>
       <Kurs/>
