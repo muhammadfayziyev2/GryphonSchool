@@ -13,8 +13,6 @@ const Kurs = () => {
             <section className="projects-section">
                 <h2 className="section-title">КУРСЫ</h2>
                 <div className="underline"></div>
-
-                {/* Swiper boshlanishi */}
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
                     autoplay={{ delay: 4000, disableOnInteraction: true }}
@@ -59,7 +57,6 @@ const Kurs = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
                     <SwiperSlide>
                         <div className="project-card">
                             <div className="card-front">
@@ -75,7 +72,6 @@ const Kurs = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-
                     <SwiperSlide>
                         <div className="project-card">
                             <div className="card-front">
@@ -92,7 +88,6 @@ const Kurs = () => {
                         </div>
                     </SwiperSlide>
                 </Swiper>
-                {/* Swiper tugashi */}
             </section>
         </div>
     )

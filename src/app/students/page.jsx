@@ -46,7 +46,7 @@ const Page = () => {
   const checkGrammar = async (text) => {
     const res = await fetch('https://api.languagetool.org/v2/check', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
       body: new URLSearchParams({
         text: text,
         language: 'en-US'

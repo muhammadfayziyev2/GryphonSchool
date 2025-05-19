@@ -17,38 +17,49 @@ export default function StarBackground() {
         resize();
         window.addEventListener("resize", resize);
 
-        // Stars
+        // Galaxy stars setup
         const stars = [];
-        const numStars = 400;
+        const numStars = 800;
         for (let i = 0; i < numStars; i++) {
             const angle = Math.random() * 2 * Math.PI;
-            const radius = Math.random() * w * 0.5;
+            const radius = Math.pow(Math.random(), 0.5) * w * 0.5; // closer to center
             stars.push({
-                x: Math.cos(angle) * radius,
-                y: Math.sin(angle) * radius,
+                angle,
+                radius,
                 z: Math.random() * w,
+                speed: 0.0005 + Math.random() * 0.001, // for rotation
             });
         }
+
+        let time = 0;
 
         function animate() {
             ctx.fillStyle = "rgba(5, 10, 25, 1)";
             ctx.fillRect(0, 0, w, h);
 
-            // Animate stars
             for (let i = 0; i < stars.length; i++) {
                 const star = stars[i];
-                star.z -= 0.5;
-                if (star.z <= 0) star.z = w;
+
+                // Spiral rotation
+                star.angle += star.speed;
+                if (star.angle > Math.PI * 2) star.angle -= Math.PI * 2;
+
+                // 3D perspective
+                star.z -= 0.3;
+                if (star.z <= 0.1) star.z = w;
 
                 const k = 128.0 / star.z;
-                const px = star.x * k + w / 2;
-                const py = star.y * k + h / 2;
+                const x = Math.cos(star.angle) * star.radius;
+                const y = Math.sin(star.angle) * star.radius;
+                const px = x * k + w / 2;
+                const py = y * k + h / 2;
 
                 if (px >= 0 && px <= w && py >= 0 && py <= h) {
-                    const size = (1 - star.z / w) * 2;
+                    const size = (1 - star.z / w) * 2.5;
+                    const opacity = 0.3 + 0.7 * (1 - star.z / w);
                     ctx.beginPath();
                     ctx.arc(px, py, size, 0, Math.PI * 2);
-                    ctx.fillStyle = "rgba(255,255,255,0.8)";
+                    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
                     ctx.fill();
                 }
             }
