@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React from 'react'
 
 const ContactInfo = () => {
@@ -20,11 +21,10 @@ const ContactInfo = () => {
               </svg>
               <div>
                 <div className="label">Локация</div>
-                <div className="info-text">Самаркандская область</div>
-                <div className="info-text">Каттакурган, Амир Темур дом 1</div>
+                <Link target='_blank' href='https://www.google.com/maps/place/Gryphon+center/@39.9031063,66.2664155,17z/data=!3m1!4b1!4m6!3m5!1s0x3f4d8df7206a757d:0x367701c66f3aa987!8m2!3d39.9031063!4d66.2664155!16s%2Fg%2F11v5zbb811?authuser=0&entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoASAFQAw%3D%3D' className="info-text">Самаркандская область <br />
+               Каттакурган, Амир Темур дом 1</Link>
               </div>
             </div>
-
             <div className="contact-item">
               <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -41,7 +41,7 @@ const ContactInfo = () => {
               </svg>
               <div>
                 <div className="label">Телефон:</div>
-                <a href="tel:+14155552671" className="info-link">+998 93 300 58 40</a>
+                <a href="" className="info-link">+998 93 300 58 40</a>
               </div>
             </div>
           </div>

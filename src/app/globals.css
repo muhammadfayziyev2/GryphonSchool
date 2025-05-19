@@ -317,7 +317,9 @@
 #about .relative {
   height: 130px;
 }
-
+.pad{
+  padding: 20px;
+}
 #about .inset-0 {
   top: 0;
   right: 0;
@@ -325,13 +327,10 @@
   left: 0;
 }
 
-#about .bg-gradient-to-r {
-  background-image: linear-gradient(to right, #6366f1, #8b5cf6);
-}
 
 
 #about .blur-sm {
-  filter: blur(2px);
+  filter: blur(10px);
 }
 
 #about .bg-gray-900\/70 {
