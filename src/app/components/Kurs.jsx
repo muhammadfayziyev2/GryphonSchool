@@ -15,7 +15,7 @@ const Kurs = () => {
                 <div className="underline"></div>
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    autoplay={{ delay: 4000, disableOnInteraction: true }}
+                    autoplay={{ delay: 2000, disableOnInteraction: true }}
                     pagination={{ clickable: true }}
                     breakpoints={{
                         640: { slidesPerView: 1 },
