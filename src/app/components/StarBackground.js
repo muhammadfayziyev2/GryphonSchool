@@ -9,12 +9,15 @@ export default function StarBackground() {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
 
-        let w, h;
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+
         function resize() {
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
         }
-        resize();
         window.addEventListener("resize", resize);
 
         function hexToRgb(hex) {
@@ -25,17 +28,18 @@ export default function StarBackground() {
             return `${r}, ${g}, ${b}`;
         }
 
+        // Mouse parallax
         let mouseX = 0, mouseY = 0;
-        // Mouse harakatini olish va normalize qilish
-        document.addEventListener("mousemove", (e) => {
-            mouseX = (e.clientX / w) * 2 - 1;  // -1 dan 1 gacha
-            mouseY = (e.clientY / h) * 2 - 1;  // -1 dan 1 gacha
+        window.addEventListener("mousemove", (e) => {
+            mouseX = (e.clientX / w - 0.5) * 2;
+            mouseY = (e.clientY / h - 0.5) * 2;
         });
 
         // Stars
         const stars = [];
         const starColors = ["#ffffff", "#aaddff", "#ffeedd", "#ffd1dc"];
-        for (let i = 0; i < 800; i++) {
+        const starCount = Math.floor(w * 0.3); // Dinamik yulduz soni
+        for (let i = 0; i < starCount; i++) {
             const angle = Math.random() * 2 * Math.PI;
             const radius = Math.pow(Math.random(), 0.5) * w * 0.5;
             stars.push({
@@ -54,7 +58,7 @@ export default function StarBackground() {
             ["#ccffff", "#003366"],
             ["#ffeecc", "#993300"]
         ];
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             const angle = Math.random() * 2 * Math.PI;
             const radius = Math.random() * w * 0.4;
             const z = Math.random() * w;
@@ -65,7 +69,7 @@ export default function StarBackground() {
         // Nebulas
         const nebulas = [];
         const nebulaColors = ["#8844aa", "#3366ff", "#66cc99", "#ff6699"];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             nebulas.push({
                 x: Math.random() * w,
                 y: Math.random() * h,
@@ -76,8 +80,15 @@ export default function StarBackground() {
         }
 
         let time = 0;
+        let lastFrame = 0;
 
-        function animate() {
+        function animate(now) {
+            if (now - lastFrame < 30) {
+                requestAnimationFrame(animate);
+                return;
+            }
+            lastFrame = now;
+
             ctx.fillStyle = "rgba(5, 10, 25, 1)";
             ctx.fillRect(0, 0, w, h);
             time += 0.01;
@@ -93,7 +104,7 @@ export default function StarBackground() {
                 ctx.fill();
             });
 
-            // Galaxies with parallax effect
+            // Galaxies
             galaxies.forEach(g => {
                 g.angle += g.speed;
                 g.z -= 0.2;
@@ -102,7 +113,6 @@ export default function StarBackground() {
                 const k = 128.0 / g.z;
                 const x = Math.cos(g.angle) * g.radius;
                 const y = Math.sin(g.angle) * g.radius;
-                // Parallax effect: mouseX and mouseY multiplied by a factor, katta elementlar ko'proq harakat qiladi
                 const parallaxX = mouseX * 50 * (1 - g.z / w);
                 const parallaxY = mouseY * 50 * (1 - g.z / w);
 
@@ -123,7 +133,7 @@ export default function StarBackground() {
                 }
             });
 
-            // Stars with parallax effect
+            // Stars
             stars.forEach((star, i) => {
                 star.angle += star.speed;
                 if (star.angle > Math.PI * 2) star.angle -= Math.PI * 2;
@@ -133,10 +143,8 @@ export default function StarBackground() {
                 const k = 128.0 / star.z;
                 const x = Math.cos(star.angle) * star.radius;
                 const y = Math.sin(star.angle) * star.radius;
-
-                // Parallax effect kichikroq amplitude bilan (stars juda ko'p, shuning uchun biroz sekinroq)
-                const parallaxX = mouseX * 30 * (1 - star.z / w);
-                const parallaxY = mouseY * 30 * (1 - star.z / w);
+                const parallaxX = mouseX * 20 * (1 - star.z / w);
+                const parallaxY = mouseY * 20 * (1 - star.z / w);
 
                 const px = x * k + w / 2 + parallaxX;
                 const py = y * k + h / 2 + parallaxY;
@@ -149,19 +157,18 @@ export default function StarBackground() {
 
                     ctx.beginPath();
                     ctx.arc(px, py, size, 0, Math.PI * 2);
-                    ctx.shadowBlur = 6;
-                    ctx.shadowColor = star.color;
                     ctx.fillStyle = `rgba(${hexToRgb(star.color)}, ${opacity})`;
                     ctx.fill();
-                    ctx.shadowBlur = 0;
                 }
             });
 
             requestAnimationFrame(animate);
         }
 
-        animate();
-        return () => window.removeEventListener("resize", resize);
+        requestAnimationFrame(animate);
+        return () => {
+            window.removeEventListener("resize", resize);
+        };
     }, []);
 
     return (
