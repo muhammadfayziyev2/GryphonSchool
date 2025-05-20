@@ -11,12 +11,21 @@ export default function StarBackground() {
 
         let w = window.innerWidth;
         let h = window.innerHeight;
-        canvas.width = w;
-        canvas.height = h;
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.scale(dpr, dpr);
 
         function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w * dpr;
+            canvas.height = h * dpr;
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+            ctx.scale(dpr, dpr);
         }
         window.addEventListener("resize", resize);
 
@@ -28,30 +37,34 @@ export default function StarBackground() {
             return `${r}, ${g}, ${b}`;
         }
 
-        // Mouse parallax
         let mouseX = 0, mouseY = 0;
         window.addEventListener("mousemove", (e) => {
             mouseX = (e.clientX / w - 0.5) * 2;
             mouseY = (e.clientY / h - 0.5) * 2;
         });
 
-        // Stars
-        const stars = [];
         const starColors = ["#ffffff", "#aaddff", "#ffeedd", "#ffd1dc"];
-        const starCount = Math.floor(w * 0.3); // Dinamik yulduz soni
-        for (let i = 0; i < starCount; i++) {
-            const angle = Math.random() * 2 * Math.PI;
-            const radius = Math.pow(Math.random(), 0.5) * w * 0.5;
-            stars.push({
-                angle,
-                radius,
-                z: Math.random() * w,
-                speed: 0.0005 + Math.random() * 0.001,
-                color: starColors[Math.floor(Math.random() * starColors.length)],
-            });
-        }
+        const starLayers = [
+            { stars: [], speed: 0.3, scale: 1.5 },
+            { stars: [], speed: 0.2, scale: 1 },
+            { stars: [], speed: 0.1, scale: 0.5 }
+        ];
+        const totalStars = Math.floor(w * 0.3);
 
-        // Galaxies
+        starLayers.forEach(layer => {
+            for (let i = 0; i < totalStars / 3; i++) {
+                const angle = Math.random() * 2 * Math.PI;
+                const radius = Math.pow(Math.random(), 0.5) * w * 0.5;
+                layer.stars.push({
+                    angle,
+                    radius,
+                    z: Math.random() * w,
+                    speed: 0.0005 + Math.random() * 0.001,
+                    color: starColors[Math.floor(Math.random() * starColors.length)],
+                });
+            }
+        });
+
         const galaxies = [];
         const galaxyColors = [
             ["#ffccff", "#660066"],
@@ -66,7 +79,6 @@ export default function StarBackground() {
             galaxies.push({ angle, radius, z, color1, color2, speed: 0.0002 + Math.random() * 0.0005 });
         }
 
-        // Nebulas
         const nebulas = [];
         const nebulaColors = ["#8844aa", "#3366ff", "#66cc99", "#ff6699"];
         for (let i = 0; i < 3; i++) {
@@ -75,28 +87,81 @@ export default function StarBackground() {
                 y: Math.random() * h,
                 radius: 100 + Math.random() * 300,
                 color: nebulaColors[Math.floor(Math.random() * nebulaColors.length)],
-                opacity: 0.1 + Math.random() * 0.3,
+                baseOpacity: 0.1 + Math.random() * 0.3,
+                offset: Math.random() * 10
             });
+        }
+
+        const shootingStars = [];
+
+        function createShootingStar() {
+            if (shootingStars.length < 2 && Math.random() < 0.01) {
+                const length = 200 + Math.random() * 200;
+                const speed = 8 + Math.random() * 5;
+                const angle = Math.PI * 0.75 + (Math.random() - 0.5) * 0.2;
+
+                shootingStars.push({
+                    x: Math.random() * w,
+                    y: Math.random() * h * 0.5,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    length,
+                    life: 1,
+                    fadeRate: 0.015,
+                });
+            }
+        }
+
+        function drawShootingStars() {
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                const star = shootingStars[i];
+
+                const endX = star.x - star.vx * star.length / 10;
+                const endY = star.y - star.vy * star.length / 10;
+
+                const gradient = ctx.createLinearGradient(star.x, star.y, endX, endY);
+                gradient.addColorStop(0, `rgba(255,255,255,${star.life})`);
+                gradient.addColorStop(1, `rgba(255,255,255,0)`);
+
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(star.x, star.y);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+
+                star.x += star.vx;
+                star.y += star.vy;
+                star.life -= star.fadeRate;
+
+                if (
+                    star.life <= 0 ||
+                    star.x > w + star.length ||
+                    star.y > h + star.length
+                ) {
+                    shootingStars.splice(i, 1);
+                }
+            }
         }
 
         let time = 0;
         let lastFrame = 0;
 
         function animate(now) {
-            if (now - lastFrame < 30) {
+            if (now - lastFrame < 33) {
                 requestAnimationFrame(animate);
                 return;
             }
             lastFrame = now;
+            time += 0.01;
 
             ctx.fillStyle = "rgba(5, 10, 25, 1)";
             ctx.fillRect(0, 0, w, h);
-            time += 0.01;
 
-            // Nebulas
-            nebulas.forEach(n => {
+            nebulas.forEach((n) => {
+                const opacity = n.baseOpacity + Math.sin(time + n.offset) * 0.05;
                 const gradient = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.radius);
-                gradient.addColorStop(0, `rgba(${hexToRgb(n.color)}, ${n.opacity})`);
+                gradient.addColorStop(0, `rgba(${hexToRgb(n.color)}, ${opacity})`);
                 gradient.addColorStop(1, "rgba(0, 0, 0, 0)");
                 ctx.beginPath();
                 ctx.fillStyle = gradient;
@@ -104,7 +169,6 @@ export default function StarBackground() {
                 ctx.fill();
             });
 
-            // Galaxies
             galaxies.forEach(g => {
                 g.angle += g.speed;
                 g.z -= 0.2;
@@ -133,34 +197,38 @@ export default function StarBackground() {
                 }
             });
 
-            // Stars
-            stars.forEach((star, i) => {
-                star.angle += star.speed;
-                if (star.angle > Math.PI * 2) star.angle -= Math.PI * 2;
-                star.z -= 0.3;
-                if (star.z <= 0.1) star.z = w;
+            starLayers.forEach(layer => {
+                layer.stars.forEach((star, i) => {
+                    star.angle += star.speed * layer.speed;
+                    if (star.angle > Math.PI * 2) star.angle -= Math.PI * 2;
+                    star.z -= layer.speed;
+                    if (star.z <= 0.1) star.z = w;
 
-                const k = 128.0 / star.z;
-                const x = Math.cos(star.angle) * star.radius;
-                const y = Math.sin(star.angle) * star.radius;
-                const parallaxX = mouseX * 20 * (1 - star.z / w);
-                const parallaxY = mouseY * 20 * (1 - star.z / w);
+                    const k = 128.0 / star.z;
+                    const x = Math.cos(star.angle) * star.radius;
+                    const y = Math.sin(star.angle) * star.radius;
+                    const parallaxX = mouseX * 20 * (1 - star.z / w);
+                    const parallaxY = mouseY * 20 * (1 - star.z / w);
 
-                const px = x * k + w / 2 + parallaxX;
-                const py = y * k + h / 2 + parallaxY;
+                    const px = x * k + w / 2 + parallaxX;
+                    const py = y * k + h / 2 + parallaxY;
 
-                if (px >= 0 && px <= w && py >= 0 && py <= h) {
-                    const size = (1 - star.z / w) * 2.5;
-                    const baseOpacity = 0.2 + 0.8 * (1 - star.z / w);
-                    const twinkle = 0.5 + 0.5 * Math.sin(time + i);
-                    const opacity = baseOpacity * twinkle;
+                    if (px >= 0 && px <= w && py >= 0 && py <= h) {
+                        const size = (1 - star.z / w) * 2.5 * layer.scale;
+                        const baseOpacity = 0.2 + 0.8 * (1 - star.z / w);
+                        const twinkle = 0.5 + 0.5 * Math.sin(time + i);
+                        const opacity = baseOpacity * twinkle;
 
-                    ctx.beginPath();
-                    ctx.arc(px, py, size, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${hexToRgb(star.color)}, ${opacity})`;
-                    ctx.fill();
-                }
+                        ctx.beginPath();
+                        ctx.arc(px, py, size, 0, Math.PI * 2);
+                        ctx.fillStyle = `rgba(${hexToRgb(star.color)}, ${opacity})`;
+                        ctx.fill();
+                    }
+                });
             });
+
+            createShootingStar();
+            drawShootingStars();
 
             requestAnimationFrame(animate);
         }

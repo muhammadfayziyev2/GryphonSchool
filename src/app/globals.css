@@ -961,6 +961,7 @@ body {
 }
 
 .ws-container {
+  height: 100vh;
   background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
   color: white;
   padding: 4rem 2rem;
