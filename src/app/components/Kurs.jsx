@@ -87,7 +87,7 @@ const Kurs = () => {
                             </div>
                         </div>
                     </SwiperSlide>
-                </Swiper>
+                </Swiper>  
             </section>
         </div>
     )

@@ -147,7 +147,7 @@ const Page = () => {
             {loading ? 'Listening...' : '🎤 Speak'}
           </button>
           <button className="cancel-btn" onClick={() => setTranscript('')}>Cancel ESC</button>
-          <button className="send-btn" onClick={async () => {
+          <button className="send-btn" onClick={async () => {   
             await checkGrammar(transcript)
             nextQuestion()
           }}>➤</button>
