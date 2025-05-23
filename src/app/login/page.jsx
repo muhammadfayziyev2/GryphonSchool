@@ -3,9 +3,63 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '../context/LanguageContext';
+
+const translations = {
+  ru: {
+    fullName: "Ф.И.О.",
+    phoneNumber: "Номер телефона",
+    password: "Пароль",
+    placeholderFullName: "Фамилия и имя",
+    placeholderPhone: "Номер телефона",
+    placeholderPassword: "Пароль",
+    rememberMe: "Запомнить меня",
+    forgotPassword: "Забыли пароль?",
+    submit: "Отправить",
+    registerTitle: "Регистрация",
+    forgotPasswordAlert: "Для восстановления пароля обратитесь к администратору или перейдите на соответствующую страницу.",
+    successMessage: "Регистрация прошла успешно",
+    errorMessage: "Произошла ошибка",
+    serverErrorMessage: "Ошибка сервера",
+  },
+  uz: {
+    fullName: "F.I.Sh",
+    phoneNumber: "Telefon raqami",
+    password: "Parol",
+    placeholderFullName: "Familiya va ism",
+    placeholderPhone: "Telefon raqam",
+    placeholderPassword: "Parol",
+    rememberMe: "Eslab qolish",
+    forgotPassword: "Parolni unutdingizmi?",
+    submit: "Yuborish",
+    registerTitle: "Ro‘yxatdan o‘tish",
+    forgotPasswordAlert: "Parolni tiklash uchun administratorga murojaat qiling yoki tegishli sahifaga o‘ting.",
+    successMessage: "Ro‘yxatdan o‘tildi",
+    errorMessage: "Xatolik yuz berdi",
+    serverErrorMessage: "Serverda xatolik",
+  },
+  en: {
+    fullName: "Full Name",
+    phoneNumber: "Phone Number",
+    password: "Password",
+    placeholderFullName: "Full Name",
+    placeholderPhone: "Phone Number",
+    placeholderPassword: "Password",
+    rememberMe: "Remember me",
+    forgotPassword: "Forgot password?",
+    submit: "Submit",
+    registerTitle: "Registration",
+    forgotPasswordAlert: "To reset your password, please contact the administrator or visit the relevant page.",
+    successMessage: "Registration successful",
+    errorMessage: "An error occurred",
+    serverErrorMessage: "Server error",
+  }
+};
 
 const Page = () => {
   const router = useRouter();
+  const { language } = useLanguage();
+  const t = translations[language] || translations['ru']; 
 
   const [studentUsers, setStudentUsers] = useState({
     full_name: '',
@@ -24,18 +78,17 @@ const Page = () => {
         studentUsers
       );
       if (response.status === 200 || response.status === 201) {
-        setMessage('Ro‘yxatdan o‘tildi');
+        setMessage(t.successMessage);
         if (rememberMe) {
           localStorage.setItem('student_phone', studentUsers.phone_number);
         }
-
         router.push('/students');
       } else {
-        setMessage('Xatolik yuz berdi');
+        setMessage(t.errorMessage);
       }
     } catch (error) {
-      console.error('Xatolik:', error.response?.data || error.message);
-      setMessage('Serverda xatolik');
+      console.error('Error:', error.response?.data || error.message);
+      setMessage(t.serverErrorMessage);
     }
   };
 
@@ -52,36 +105,36 @@ const Page = () => {
   };
 
   const handleForgotPassword = () => {
-    alert('Parolni tiklash uchun administratorga murojaat qiling yoki tegishli sahifaga o‘ting.');
+    alert(t.forgotPasswordAlert);
   };
 
   return (
     <div className="login-unit">
       <div className="contact-form-container">
-        <h2>Ro‘yxatdan o‘tish</h2>
+        <h2>{t.registerTitle}</h2>
         <form onSubmit={handleRegister} className="contact-form">
-          <label>F.I.Sh</label>
+          <label>{t.fullName}</label>
           <input
             type="text"
-            placeholder="Familiya va ism"
+            placeholder={t.placeholderFullName}
             name="full_name"
             required
             value={studentUsers.full_name}
             onChange={handleChange}
           />
-          <label>Telefon raqami</label>
+          <label>{t.phoneNumber}</label>
           <input
             type="text"
-            placeholder="Telefon raqam"
+            placeholder={t.placeholderPhone}
             name="phone_number"
             required
             value={studentUsers.phone_number}
             onChange={handleChange}
           />
-          <label>Parol</label>
+          <label>{t.password}</label>
           <input
             type="password"
-            placeholder="Parol"
+            placeholder={t.placeholderPassword}
             name="password"
             required
             value={studentUsers.password}
@@ -96,7 +149,7 @@ const Page = () => {
                 onChange={handleRememberMeChange}
                 style={{ marginRight: '8px' }}
               />
-              Eslab qolish
+              {t.rememberMe}
             </label>
             <a
               onClick={handleForgotPassword}
@@ -107,16 +160,15 @@ const Page = () => {
                 textDecoration: 'underline'
               }}
             >
-              Parolni unutdingizmi?
+              {t.forgotPassword}
             </a>
           </div>
 
-          <button type="submit">Yuborish</button>
+          <button type="submit">{t.submit}</button>
         </form>
         {message && <p>{message}</p>}
       </div>
     </div>
-    
   );
 };
 
