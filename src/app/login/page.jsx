@@ -59,7 +59,7 @@ const translations = {
 const Page = () => {
   const router = useRouter();
   const { language } = useLanguage();
-  const t = translations[language] || translations['ru']; 
+  const t = translations[language] || translations['ru'];
 
   const [studentUsers, setStudentUsers] = useState({
     full_name: '',
@@ -77,11 +77,14 @@ const Page = () => {
         'https://authentification.pythonanywhere.com/api/accounts/signup/',
         studentUsers
       );
+
       if (response.status === 200 || response.status === 201) {
         setMessage(t.successMessage);
-        if (rememberMe) {
-          localStorage.setItem('student_phone', studentUsers.phone_number);
-        }
+
+        // Ism va telefonni doim saqlash (rememberMe ga bog'liq emas)
+        localStorage.setItem('student_name', studentUsers.full_name);
+        localStorage.setItem('student_phone', studentUsers.phone_number);
+
         router.push('/students');
       } else {
         setMessage(t.errorMessage);
