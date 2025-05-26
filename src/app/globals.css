@@ -1033,7 +1033,7 @@ body {
 }
 
 .preview-btn {
-  background-color: #30363d;
+  background: linear-gradient(90deg, #303f9f, #7b1fa2);
   color: #c9d1d9;
   font-size: 12px;
   padding: 4px 10px;
@@ -1041,8 +1041,11 @@ body {
   border-radius: 8px;
   cursor: pointer;
   text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
 }
-
+.preview-btn:hover{
+  box-shadow: 0 0 10px rgba(147, 51, 234, 0.8), 0 0 10px rgba(59, 130, 246, 0.6);
+}
 .card-title {
   font-size: 16px;
   font-weight: bold;
