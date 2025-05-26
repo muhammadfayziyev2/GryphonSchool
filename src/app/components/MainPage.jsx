@@ -8,8 +8,8 @@ const translations = {
   RU: {
     // ...
     main: {
-      title: 'Раскройте свой потенциал с GRYPHON  вашим проводником в мир знаний!',
-      subtitle: 'Добро пожаловать в GRYPHON, где знание становится силой!\nНаш центр предлагает обучение английскому и русскому языку, помогая вам достичь новых высот независимо от вашего уровня подготовки.',
+      title: 'Раскройте свой потенциал с GRYPHON вашим проводником в мир знаний!',
+      subtitle: 'Добро пожаловать в GRYPHON, где знание становится силой! Наш центр предлагает обучение английскому и русскому языку, помогая вам достичь новых высот независимо от вашего уровня подготовки.',
       discountBtn: 'Получить скидку!',
       loginBtn: 'Войти',
     },
@@ -17,8 +17,8 @@ const translations = {
   UZ: {
     // ...
     main: {
-      title: 'GRYPHON bilan imkoniyatlaringizni oching — bilimlar olamiga yo‘l ko‘rsatuvchingiz!',
-      subtitle: `GRYPHONga xush kelibsiz, bu yerda bilim — kuch!\n
+      title: 'GRYPHON bilan imkoniyatlaringizni oching bilimlar olamiga yo‘l ko‘rsatuvchingiz!',
+      subtitle: `GRYPHONga xush kelibsiz, bu yerda bilim — kuch!
 Bizning markazimiz ingliz va rus tillarini o‘rgatadi, 
 sizni tayyorgarlik darajangizdan qat’i nazar, yangi cho‘qqilarga olib chiqadi.`,
       discountBtn: 'Chegirmaga ega bo‘ling!',
@@ -28,8 +28,8 @@ sizni tayyorgarlik darajangizdan qat’i nazar, yangi cho‘qqilarga olib chiqad
   EN: {
     // ...
     main: {
-      title: 'Unleash your potential with GRYPHON — your guide to the world of knowledge!',
-      subtitle: `Welcome to GRYPHON, where knowledge becomes power!\n
+      title: 'Unleash your potential with GRYPHON your guide to the world of knowledge!',
+      subtitle: `Welcome to GRYPHON, where knowledge becomes power!
 Our center offers English and Russian language training, 
 helping you reach new heights regardless of your level.`,
       discountBtn: 'Get a discount!',
