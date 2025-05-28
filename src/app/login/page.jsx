@@ -1,7 +1,6 @@
-'use client'
+'use client';
 
-import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -17,10 +16,12 @@ const translations = {
     forgotPassword: "Забыли пароль?",
     submit: "Отправить",
     registerTitle: "Регистрация",
-    forgotPasswordAlert: "Для восстановления пароля обратитесь к администратору или перейдите на соответствующую страницу.",
+    forgotPasswordAlert: "Введите новый пароль",
+    newPassword: "Новый пароль",
+    savePassword: "Сохранить пароль",
     successMessage: "Регистрация прошла успешно",
+    passwordUpdated: "Пароль успешно обновлен",
     errorMessage: "Произошла ошибка",
-    serverErrorMessage: "Ошибка сервера",
   },
   uz: {
     fullName: "F.I.Sh",
@@ -33,10 +34,12 @@ const translations = {
     forgotPassword: "Parolni unutdingizmi?",
     submit: "Yuborish",
     registerTitle: "Ro‘yxatdan o‘tish",
-    forgotPasswordAlert: "Parolni tiklash uchun administratorga murojaat qiling yoki tegishli sahifaga o‘ting.",
+    forgotPasswordAlert: "Yangi parolni kiriting",
+    newPassword: "Yangi parol",
+    savePassword: "Parolni saqlash",
     successMessage: "Ro‘yxatdan o‘tildi",
+    passwordUpdated: "Parol muvaffaqiyatli yangilandi",
     errorMessage: "Xatolik yuz berdi",
-    serverErrorMessage: "Serverda xatolik",
   },
   en: {
     fullName: "Full Name",
@@ -49,10 +52,12 @@ const translations = {
     forgotPassword: "Forgot password?",
     submit: "Submit",
     registerTitle: "Registration",
-    forgotPasswordAlert: "To reset your password, please contact the administrator or visit the relevant page.",
+    forgotPasswordAlert: "Enter a new password",
+    newPassword: "New Password",
+    savePassword: "Save Password",
     successMessage: "Registration successful",
+    passwordUpdated: "Password updated successfully",
     errorMessage: "An error occurred",
-    serverErrorMessage: "Server error",
   }
 };
 
@@ -69,30 +74,39 @@ const Page = () => {
 
   const [rememberMe, setRememberMe] = useState(false);
   const [message, setMessage] = useState('');
+  const [showResetPassword, setShowResetPassword] = useState(false);
+  const [newPassword, setNewPassword] = useState('');
+
+  useEffect(() => {
+    const savedName = localStorage.getItem('student_name');
+    const savedPhone = localStorage.getItem('student_phone');
+    const savedPassword = localStorage.getItem('student_password');
+
+    if (savedName && savedPhone) {
+      setStudentUsers({
+        full_name: savedName,
+        phone_number: savedPhone,
+        password: savedPassword || '',
+      });
+      setRememberMe(true);
+    }
+  }, []);
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        'https://authentification.pythonanywhere.com/api/accounts/signup/',
-        studentUsers
-      );
-
-      if (response.status === 200 || response.status === 201) {
-        setMessage(t.successMessage);
-
-        // Ism va telefonni doim saqlash (rememberMe ga bog'liq emas)
-        localStorage.setItem('student_name', studentUsers.full_name);
-        localStorage.setItem('student_phone', studentUsers.phone_number);
-
-        router.push('/students');
-      } else {
-        setMessage(t.errorMessage);
-      }
-    } catch (error) {
-      console.error('Error:', error.response?.data || error.message);
-      setMessage(t.serverErrorMessage);
+    // Demo uchun serverga hech narsa yubormaymiz
+    if (rememberMe) {
+      localStorage.setItem('student_name', studentUsers.full_name);
+      localStorage.setItem('student_phone', studentUsers.phone_number);
+      localStorage.setItem('student_password', studentUsers.password);
+    } else {
+      localStorage.removeItem('student_name');
+      localStorage.removeItem('student_phone');
+      localStorage.removeItem('student_password');
     }
+
+    setMessage(t.successMessage);
+    router.push('/students');
   };
 
   const handleChange = (e) => {
@@ -108,7 +122,21 @@ const Page = () => {
   };
 
   const handleForgotPassword = () => {
-    alert(t.forgotPasswordAlert);
+    setStudentUsers((prev) => ({ ...prev, password: '' }));
+    setShowResetPassword(true);
+    setMessage(t.forgotPasswordAlert);
+  };
+
+  const handleResetPassword = () => {
+    if (!newPassword) {
+      setMessage(t.errorMessage);
+      return;
+    }
+
+    localStorage.setItem('student_password', newPassword);
+    setStudentUsers((prev) => ({ ...prev, password: newPassword }));
+    setShowResetPassword(false);
+    setMessage(t.passwordUpdated);
   };
 
   return (
@@ -116,15 +144,20 @@ const Page = () => {
       <div className="contact-form-container">
         <h2>{t.registerTitle}</h2>
         <form onSubmit={handleRegister} className="contact-form">
-          <label>{t.fullName}</label>
-          <input
-            type="text"
-            placeholder={t.placeholderFullName}
-            name="full_name"
-            required
-            value={studentUsers.full_name}
-            onChange={handleChange}
-          />
+          {!rememberMe && (
+            <>
+              <label>{t.fullName}</label>
+              <input
+                type="text"
+                placeholder={t.placeholderFullName}
+                name="full_name"
+                required
+                value={studentUsers.full_name}
+                onChange={handleChange}
+              />
+            </>
+          )}
+
           <label>{t.phoneNumber}</label>
           <input
             type="text"
@@ -134,6 +167,7 @@ const Page = () => {
             value={studentUsers.phone_number}
             onChange={handleChange}
           />
+
           <label>{t.password}</label>
           <input
             type="password"
@@ -143,6 +177,21 @@ const Page = () => {
             value={studentUsers.password}
             onChange={handleChange}
           />
+
+          {showResetPassword && (
+            <>
+              <label>{t.newPassword}</label>
+              <input
+                type="password"
+                placeholder={t.newPassword}
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+              <button type="button" onClick={handleResetPassword}>
+                {t.savePassword}
+              </button>
+            </>
+          )}
 
           <div className="options" style={{ marginTop: '10px', marginBottom: '10px' }}>
             <label style={{ display: 'flex', alignItems: 'center' }}>
@@ -160,7 +209,7 @@ const Page = () => {
                 marginLeft: 'auto',
                 color: '#0070f3',
                 cursor: 'pointer',
-                textDecoration: 'underline'
+                textDecoration: 'underline',
               }}
             >
               {t.forgotPassword}

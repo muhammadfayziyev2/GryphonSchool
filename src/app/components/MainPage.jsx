@@ -36,7 +36,7 @@ helping you reach new heights regardless of your level.`,
       loginBtn: 'Login',
     },
   },
-}
+} 
 
 
 const MainPage = () => {

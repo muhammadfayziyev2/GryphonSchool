@@ -214,7 +214,7 @@
 
 .hero-subtitle {
   margin: 0 auto;
-  max-width: 50%;
+ width: 50%;
   font-size: 1.25rem;
   color: #94a3b8;
   margin-bottom: 2rem;
@@ -969,7 +969,7 @@ body {
 
 .ws-container {
   color: var(--text-primary);
-    background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
   color: white;
   height: 100vh;
   width: 100%;
@@ -1015,6 +1015,7 @@ body {
 
 .card {
   background-color: #161b22;
+
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
@@ -1043,9 +1044,11 @@ body {
   text-transform: uppercase;
   transition: all 0.2s ease-in-out;
 }
-.preview-btn:hover{
+
+.preview-btn:hover {
   box-shadow: 0 0 10px rgba(147, 51, 234, 0.8), 0 0 10px rgba(59, 130, 246, 0.6);
 }
+
 .card-title {
   font-size: 16px;
   font-weight: bold;
@@ -1080,4 +1083,131 @@ body {
   cursor: pointer;
   font-size: 16px;
   text-align: left;
+}
+
+.writing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  color: var(--text-primary);
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
+}
+
+.chat-container {
+  background-color: #121212;
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.05);
+  position: relative;
+  font-family: sans-serif;
+  color: white;
+}
+
+.chat-input {
+  width: 100%;
+  min-height: 100px;
+  background: #1e1e1e;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px;
+  color: white;
+  resize: none;
+  font-size: 14px;
+}
+
+.chat-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.forecast-btn {
+  background-color: #6f3ff5;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.send-btn {
+  margin-left: auto;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+.word-writing {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.books {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-primary);
+  background: radial-gradient(ellipse at center, #0a0a1f 0%, #05050f 100%);
+}
+
+/* PDFChatCard.css */
+
+.pdf-card {
+  display: flex;
+  width: 300px;
+  gap: 1rem;
+  background-color: #0f0f12;
+  border: 1px solid #2d2d33;
+  padding: 1.2rem;
+  border-radius: 0.75rem;
+  max-width: 500px;
+  color: #e4e4e7;
+  margin-top: 30px;
+}
+
+.pdf-icon {
+  font-size: 1.5rem;
+  background-color: #1e1e24;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: #ffffff;
+}
+
+.pdf-content h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.pdf-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #a1a1aa;
+  line-height: 1.4;
+}
+.kitob{
+  font-size: 30px;
+  font-weight: 700;
 }

@@ -8,12 +8,13 @@ import { HiMiniCog } from "react-icons/hi2";
 const ChatbotSetup = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [studentName, setStudentName] = useState('');
-
+  const [editing, setEditing] = useState(false);
+  const [newName, setNewName] = useState('');
 
   const toggleMenu = () => {
     setShowMenu(prev => !prev);
   };
-  
+
   useEffect(() => {
     const name = localStorage.getItem('student_name');
     if (name) {
@@ -21,12 +22,38 @@ const ChatbotSetup = () => {
     }
   }, []);
 
+  const handleEditClick = () => {
+    setNewName(studentName);
+    setEditing(true);
+    setShowMenu(false);
+  };
+
+  const handleSave = () => {
+    if (newName.trim() !== '') {
+      localStorage.setItem('student_name', newName.trim());
+      setStudentName(newName.trim());
+    }
+    setEditing(false);
+  };
+
   return (
     <div className='ws-container'>
       <header className="hero-navbar">
         <div className="logo-users">
           <FaUserCircle style={{ width: '40px', height: '40px', color: 'white' }} />
-          <div className='user-name'>{studentName}</div>
+          {editing ? (
+            <input
+              type="text"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              onBlur={handleSave}
+              onKeyDown={(e) => e.key === 'Enter' && handleSave()}
+              style={{ marginLeft: '10px', padding: '5px', borderRadius: '5px' }}
+              autoFocus
+            />
+          ) : (
+            <div className='user-name'>{studentName}</div>
+          )}
         </div>
         <div className="nav-actions">
           <HiMiniCog
@@ -35,14 +62,13 @@ const ChatbotSetup = () => {
           />
           {showMenu && (
             <div className="dropdown-menu">
-              <a href="/" className="menu-link">Nзменить имя</a>
+              <button onClick={handleEditClick} className="menu-link">Изменить имя</button>
             </div>
           )}
         </div>
       </header>
-
       <div className="container">
-        <h2>Set up your chatbot</h2>
+        <h2>Hаправления</h2>
         <div className="grid">
           <div className="card">
             <div className="card-header">

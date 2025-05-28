@@ -54,7 +54,7 @@
     .projects-section {
         width: 100%;
     }
-
+ 
     .kurs {
         margin: 0 auto;
     }
@@ -64,5 +64,19 @@
     }
     .project-card{
         margin: 0 auto;
+    }
+}
+
+@media(max-width:420px){
+    .user-name{
+        font-size: 18px;
+    }
+}
+@media(max-width:430px){
+    .hero-title{
+        width: 90%;
+    }
+    .hero-subtitle{
+        width: 100%;
     }
 }
