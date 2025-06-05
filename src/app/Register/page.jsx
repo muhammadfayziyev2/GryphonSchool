@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import RegisterPage from "../components/RegisterPage";
 import axios from "axios";
 import { ToastContainer } from 'react-toastify';
+import Header from "../components/Header";
 
 const page = () => {
   const [dispatch, setDispatch] = useState(null);
@@ -37,6 +38,7 @@ const page = () => {
 
   return (
     <div className="register-home">
+      <Header/>
       <ToastContainer />
       <RegisterPage sendData={sendData} loading={loading} />
     </div>
