@@ -1,4 +1,4 @@
-// context/LanguageContext.jsx
+
 'use client';
 import React, { createContext, useContext, useState } from 'react';
 
@@ -13,7 +13,7 @@ export const useLanguage = () => {
 };
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguage] = useState('RU'); // Default til: RU
+    const [language, setLanguage] = useState('RU'); 
 
     return (
         <LanguageContext.Provider value={{ language, setLanguage }}>

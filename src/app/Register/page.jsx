@@ -12,7 +12,7 @@ const page = () => {
   const [error, setError] = useState("");
 
   const sendData = async (FullName, phone, courses) => { 
-    setLoading(true);
+    setLoading(true); 
     setError("");
 
     try {

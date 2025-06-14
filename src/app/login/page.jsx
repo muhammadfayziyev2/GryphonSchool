@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage } from '../context/LanguageContext';
+import Header from '../components/Header';
 
 const translations = {
   ru: {
@@ -29,7 +30,7 @@ const translations = {
     placeholderFullName: "Familiya va ism",
     placeholderPhone: "Telefon raqam",
     placeholderPassword: "Parol",
-    rememberMe: "Eslab qolish",
+    rememberMe: "Eslab qolish", 
     forgotPassword: "Parolni unutdingizmi?",
     submit: "Yuborish",
     registerTitle: "Ro‘yxatdan o‘tish",
@@ -83,7 +84,7 @@ const Page = () => {
         localStorage.setItem('student_name', studentUsers.full_name);
         localStorage.setItem('student_phone', studentUsers.phone_number);
 
-        router.push('/students');
+        router.push('/');
       } else {
         setMessage(t.errorMessage);
       }
@@ -111,6 +112,7 @@ const Page = () => {
 
   return (
     <div className="login-unit">
+      <Header/>
       <div className="contact-form-container">
         <h2>{t.registerTitle}</h2>
         <form onSubmit={handleRegister} className="contact-form">

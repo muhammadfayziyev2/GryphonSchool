@@ -1,6 +1,19 @@
-@media(max-width:765px) {
-    .li-header {
+@media(max-width:930px) {
+    .sidebar {
         display: none;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0%;
+    }
+
+    .header {
+        width: 97.3%;
+    }
+
+    .fimenu {
+        display: flex;
     }
 
     .btn-header {
@@ -8,75 +21,31 @@
     }
 }
 
-@media(max-width:770px) {
-    .hero-title {
-        font-size: 30px;
-        margin-top: 50px;
+@media(max-width:460px) {
+    .logo-name {
+        font-size: 20px;
     }
+
+    .btn-header-login {
+        background-color: #c9ab00;
+        width: 100px;
+        height: 35px;
+        border-radius: 20px;
+        font-size: 10px;
+    }
+    
+    
 }
-
-@media(max-width:440px) {
-    .hero-title {
-        font-size: 26px;
-        margin-top: 70px;
+@media(max-width:520px){
+    .units-about{
+      
+        width: 92%;
     }
-
-}
-
-@media(max-width:1400px) {
-    .gryphon {
-        margin-top: 100px;
-    }
-}
-
-@media(max-width:670px) {
-    .gryphon {
-        margin-top: 200px;
-    }
-}
-
-@media(max-width:440px) {
-    .gryphon {
-        margin-top: 300px;
-    }
-}
-
-@media(max-width:440px) {
-    .relative {
-        max-width: 380px;
-    }
-
-    #about {
-        margin: 0 auto;
-        margin-top: -200px;
-    }
-
-    .projects-section {
-        width: 100%;
-    }
- 
-    .kurs {
-        margin: 0 auto;
-    }
-
-    .section-title {
-        font-size: 25px;
-    }
-    .project-card{
-        margin: 0 auto;
-    }
-}
-
-@media(max-width:420px){
-    .user-name{
-        font-size: 18px;
-    }
-}
-@media(max-width:430px){
-    .hero-title{
-        width: 90%;
-    }
-    .hero-subtitle{
-        width: 100%;
-    }
+    .about-us {
+            display: flex;
+            flex-wrap: wrap;
+        }
+                .unit-main {
+                    display: flex;
+                    flex-direction: column;   }
 }

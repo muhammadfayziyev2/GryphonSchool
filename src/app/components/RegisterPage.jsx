@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLanguage } from '../context/LanguageContext';
@@ -72,44 +71,27 @@ const translations = {
     }
 };
 
-const RegisterPage = () => {
+const RegisterPage = ({ sendData, loading }) => {
     const { language } = useLanguage();
     const t = translations[language]?.register || translations.RU.register;
 
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         if (!name || !phone || !message) {
             toast.error(t.errorFillAll);
             return;
         }
-
-        setLoading(true);
-
-        try {
-            const response = await axios.post('https://zayavkabackend-production.up.railway.app/submit', {
-                name,
-                phone,
-                message,
-                username: 'asilbekweb2' 
-            });
-
-            toast.success(t.successSend);
-            setName('');
-            setPhone('');
-            setMessage('');
-        } catch (error) {
-            console.error(error);
-            toast.error('Xatolik yuz berdi!');
-        } finally {
-            setLoading(false);
-        }
+        sendData(name, phone, message);
+        setName('');
+        setPhone('');
+        setMessage('');
     };
+      
 
     return (
         <div className="cont">

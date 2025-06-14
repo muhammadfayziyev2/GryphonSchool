@@ -1,126 +1,86 @@
 "use client";
 
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 const Page = () => {
-  const [inputText, setInputText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  const [writingList, setWritingList] = useState([]);
+  const [selectedWriting, setSelectedWriting] = useState(null);
 
-  const handleCheckGrammar = async () => {
-    if (!inputText.trim()) return;
-
-    setLoading(true);
-    setResults([]);
-
-    try {
-      const response = await fetch("https://api.languagetoolplus.com/v2/check", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          text: inputText,
-          language: "en-US",
-        }),
+  useEffect(() => {
+    axios
+      .get(`https://iqrotalimapi.pythonanywhere.com/writing-materials/`)
+      .then((res) => {
+        if (res.status === 200 || res.status === 201) {
+          setWritingList(res.data);
+        }
       });
+  }, []);
 
-      const data = await response.json();
-      setResults(data.matches);
-    } catch (error) {
-      console.error("Grammar check failed:", error);
-    } finally {
-      setLoading(false);
+  const fetchWritingById = async (id) => {
+    try {
+      const res = await axios.get(
+        `https://iqrotalimapi.pythonanywhere.com/writing-materials/${id}/`
+      );
+      if (res.status === 200 || res.status === 201) {
+        setSelectedWriting(res.data);
+      }
+    } catch (err) {
+      console.error("Ma'lumotni olishda xatolik:", err);
     }
   };
 
-  const handleClear = () => {
-    setInputText("");
-    setResults([]);
+  const goBack = () => {
+    setSelectedWriting(null); 
   };
 
   return (
-    <div className='writing' style={{ padding: "20px", fontFamily: "Arial" }}>
-      <div className='word-writing'>
-        <h1>Writing</h1>
-      </div>
-
-      <div className="chat-container" style={{ marginTop: "20px" }}>
-        <textarea
-          className="chat-input"
-          placeholder="Type your English text here..."
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          style={{
-            width: "100%",
-            height: "150px",
-            fontSize: "16px",
-            padding: "10px",
-            borderRadius: "8px",
-            border: "1px solid #ccc"
-          }}
-        ></textarea>
-
-        <div className="chat-actions" style={{ marginTop: "10px" }}>
-          <button
-            className="forecast-btn"
-            onClick={handleCheckGrammar}
-            disabled={loading}
-            style={{
-              padding: "10px 20px",
-              marginRight: "10px",
-              backgroundColor: "#4CAF50",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer"
-            }}
-          >
-            {loading ? "Checking..." : "Check Grammar ✨"}
-          </button>
-
-          <button
-            className="cancel-btn"
-            onClick={handleClear}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: "#f44336",
-              color: "white",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer"
-            }}
-          >
-            Clear ❌
-          </button>
-        </div>
-      </div>
-
-      {results.length > 0 && (
-        <div className="results" style={{ marginTop: "30px" }}>
-          <h2>Grammar Issues:</h2>
-          {results.map((match, idx) => (
-            <div
-              key={idx}
-              style={{
-                backgroundColor: "#ffe0e0",
-                padding: "10px",
-                marginBottom: "10px",
-                borderLeft: "4px solid red",
-                borderRadius: "5px"
-              }}
-            >
-              <strong>Error:</strong> {match.message} <br />
-              <strong>Suggestions:</strong>{" "}
-              {match.replacements.map((r) => r.value).join(", ") || "None"} <br />
-              <strong>Context:</strong> {match.context.text}
+    <div className="writing">
+      <Header />
+      {!selectedWriting && (
+        <div className="writing-unit">
+          {writingList.map((writ) => (
+            <div key={writ.id} className="writing-item">
+              <p
+                className="writing-p cursor-pointer text-blue-600"
+                onClick={() => fetchWritingById(writ.id)}
+              >
+                {writ.title}
+              </p>
             </div>
           ))}
         </div>
       )}
 
-      {results.length === 0 && !loading && inputText.trim() !== "" && (
-        <p style={{ marginTop: "20px", color: "green" }}>✅ No grammar issues found!</p>
+      {selectedWriting && (
+        <div className="details">
+          <div className="writing-details">
+            <h2 className="text-xl font-bold mb-2">{selectedWriting.title}</h2>
+            <p className="mb-4">{selectedWriting.text}</p>
+
+            {selectedWriting.pdf_book?.telegram_file_url && (
+              <a
+                href={selectedWriting.pdf_book.telegram_file_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline"
+                download={`${selectedWriting.title}.pdf`} 
+              >
+                PDF-ni yuklab olish
+              </a>
+            )}
+
+            <div className="mt-4">
+              <button
+                onClick={goBack}
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+                Ortga
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
