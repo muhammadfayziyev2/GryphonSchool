@@ -33,19 +33,26 @@
         border-radius: 20px;
         font-size: 10px;
     }
-    
-    
+
+
 }
-@media(max-width:520px){
-    .units-about{
-      
+
+@media(max-width:520px) {
+    .units-about {
+
         width: 92%;
     }
+
     .about-us {
-            display: flex;
-            flex-wrap: wrap;
-        }
-                .unit-main {
-                    display: flex;
-                    flex-direction: column;   }
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .unit-main {
+        display: flex;
+        flex-direction: column;
+    }
+        .contact-form-container {
+        width: 100%;
+    }
 }
