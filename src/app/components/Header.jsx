@@ -4,13 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { FiMoon, FiMenu } from 'react-icons/fi';
 import { FaCircleUser } from 'react-icons/fa6';
 import Link from 'next/link';
-import { RiHome4Line, RiTelegram2Fill } from "react-icons/ri";
-import { PiArticleNyTimes } from "react-icons/pi";
-import { SiBookstack } from "react-icons/si";
-import { FaTeamspeak, FaEarListen, FaReadme } from "react-icons/fa6";
-import { TfiWrite } from "react-icons/tfi";
-import { IoIosSettings } from "react-icons/io";
-import { IoLogoInstagram } from "react-icons/io5";
 
 const Header = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -49,8 +42,9 @@ const Header = () => {
                     <button onClick={() => setShowSidebar(false)}>✕</button>
                 </div>
                 <nav className="flex flex-col gap-4 ">
-                    <Link href="/" onClick={() => setShowSidebar(false)}>Bosh sahifa</Link>
-                    <Link href="/Register" onClick={() => setShowSidebar(false)}>Skidka olish</Link>
+                    <Link href="/" onClick={() => setShowSidebar(false)}>
+                    Домашняя страница</Link>
+                    <Link href="/Register" onClick={() => setShowSidebar(false)}>Получить скидку!</Link>
                     <Link href="/articles" >
                         Articles
                     </Link>
@@ -68,9 +62,11 @@ const Header = () => {
                     <Link href="/writing"> Writing
                     </Link>
                     <Link href="/seting">
-                        Sozlamalar
+
+                        Настройки
                     </Link>
-                    {isLoggedIn && <Link href="/seting" onClick={() => setShowSidebar(false)}>Sozlamalar</Link>}
+                    {isLoggedIn && <Link href="/seting" onClick={() => setShowSidebar(false)}>
+                    Настройки</Link>}
                 </nav>
             </div>
 
@@ -85,7 +81,7 @@ const Header = () => {
                 </div>
 
                 <div className="icons-header flex items-center relative">
-                    <Link href="/Register" className="btn-header mr-4">
+                    <Link href="/Register" className="btn-header">
                         Получить скидку!
                     </Link>
 
@@ -119,7 +115,8 @@ const Header = () => {
                                         <strong>{studentName}</strong>
                                     </p>
                                     <div>
-                                        <Link href='/seting'>Sozlamalar</Link>
+                                        <Link href='/seting'>
+                                        Настройки</Link>
                                     </div>
                                     <button
                                         onClick={handleLogout}

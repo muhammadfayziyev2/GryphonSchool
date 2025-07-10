@@ -53,10 +53,10 @@ const Page = () => {
         {books.map((book, index) => (
           <div key={index} className='book-card'>
             <p className='book-date'>
-              Sana: {new Date(book.created_data).toLocaleString()}
+              Число: {new Date(book.created_data).toLocaleString()}
             </p>
             <button className='download-button' onClick={downloadFromTelegram}>
-              Yuklab olish
+              Скачать
             </button>
           </div>
         ))}

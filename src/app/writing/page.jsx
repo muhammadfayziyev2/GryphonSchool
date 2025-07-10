@@ -1,12 +1,30 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import Header from '../components/Header';
+import { useLanguage } from '../context/LanguageContext';
+
+const translations = {
+  uz: {
+    download: "PDF-ni yuklab olish",
+    back: "Ortga",
+  },
+  ru: {
+    download: "Скачать PDF",
+    back: "Назад",
+  },
+  en: {
+    download: "Download PDF",
+    back: "Back",
+  },
+};
 
 const Page = () => {
   const [writingList, setWritingList] = useState([]);
   const [selectedWriting, setSelectedWriting] = useState(null);
+  const { language } = useLanguage();
+  const t = translations[language] || translations.uz;
 
   useEffect(() => {
     axios
@@ -32,13 +50,13 @@ const Page = () => {
   };
 
   const goBack = () => {
-    setSelectedWriting(null); 
+    setSelectedWriting(null);
   };
 
   return (
     <div className="writing">
       <Header />
-      {!selectedWriting && (
+      {!selectedWriting ? (
         <div className="writing-unit">
           {writingList.map((writ) => (
             <div key={writ.id} className="writing-item">
@@ -51,9 +69,7 @@ const Page = () => {
             </div>
           ))}
         </div>
-      )}
-
-      {selectedWriting && (
+      ) : (
         <div className="details">
           <div className="writing-details">
             <h2 className="text-xl font-bold mb-2">{selectedWriting.title}</h2>
@@ -65,9 +81,9 @@ const Page = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline"
-                download={`${selectedWriting.title}.pdf`} 
+                download={`${selectedWriting.title}.pdf`}
               >
-                PDF-ni yuklab olish
+                {t.download}
               </a>
             )}
 
@@ -76,7 +92,7 @@ const Page = () => {
                 onClick={goBack}
                 className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
-                Ortga
+                {t.back}
               </button>
             </div>
           </div>

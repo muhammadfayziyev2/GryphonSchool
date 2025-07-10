@@ -388,15 +388,18 @@ button:disabled {
         opacity: 1;
     }
 }
-
+.seti{
+    padding-top: 110px;
+}
 .settings-container {
     max-width: 500px;
-    margin: 40px auto;
+ margin: 0 auto;
     background-color: #111417;
     color: #e0e0e0;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    
 }
 
 .settings-title {
@@ -644,7 +647,7 @@ button:disabled {
 }
 
 .test-list {
-    background-color: #2c2c2c;
+    background-color: #111417;
     padding: 10px 20px;
 }
 
@@ -975,4 +978,73 @@ button:hover {
 }
 .fimenu{
     display: none;
+}
+
+.speaking {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding-top: 100px;
+}
+
+@media (min-width: 768px) {
+    .speaking {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .speaking {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.speaking-card {
+    
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #111417;
+}
+
+.speaking-card video {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.speaking-card p {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.speaking-card a {
+    color: #2563eb;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.speaking-card a:hover {
+    color: #1d4ed8;
+}
+
+
+.list {
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.test-card {
+    padding: 10px 0;
+    
+}
+
+.options li {
+    list-style: none;
+    margin: 4px 0;
+}
+.date{
+    color: rgba(255, 255, 255, 0.442);
+    font-size: 12px;
 }
