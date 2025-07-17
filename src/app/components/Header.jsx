@@ -32,7 +32,6 @@ const Header = () => {
 
     return (
         <>
-            {/* Sidebar */}
             <div
                 className={`nav-sedeber-wrapper fixed top-0 left-0 h-full w-64 bg-black text-white z-50 p-5 transition-transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'
                     }`}
@@ -70,7 +69,6 @@ const Header = () => {
                 </nav>
             </div>
 
-            {/* Header */}
             <div className="header flex items-center justify-between px-4 py-3 bg-white shadow-md z-40 relative">
                 <div className="flex items-center gap-4">
                     <FiMenu

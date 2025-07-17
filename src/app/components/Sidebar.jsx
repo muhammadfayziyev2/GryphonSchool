@@ -34,7 +34,6 @@ export default function Sidebar({ children }) {
 
     return (
         <>
-
             <div className="sidebar">
                 <div className="logo" />
                 <nav className="nav">

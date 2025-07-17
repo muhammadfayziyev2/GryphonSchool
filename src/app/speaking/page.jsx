@@ -62,6 +62,7 @@ const Page = () => {
                 controls
                 className='w-full mb-4 rounded'
               />
+                <h3>{item.title}</h3>
               <p className='font-semibold mb-2'>{t.description}: {item.question}</p>
               <button
                 onClick={() => handleDownload(item.pdf_book.telegram_file_url, `Speaking-${item.id}.pdf`)}
